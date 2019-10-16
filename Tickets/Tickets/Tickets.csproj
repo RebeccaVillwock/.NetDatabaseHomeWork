@@ -5,8 +5,4 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="C:\Users\becky\Desktop\school\.Net Database\ticket program.cs" Link="ticket program.cs" />
-  </ItemGroup>
-
 </Project>

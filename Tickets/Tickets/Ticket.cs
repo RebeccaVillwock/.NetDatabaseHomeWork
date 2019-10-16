@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Tickets
 {
-    public class Ticket
+    public abstract class Ticket
     {
         public int ticketID { get; set; }
         public string summary { get; set; }
@@ -45,7 +45,10 @@ namespace Tickets
         {
             Console.WriteLine("Summarize Ticket: ");
         }
-
+        public void askForStatus()
+        {
+            Console.WriteLine("Enter Status of Ticket: ");
+        }
         public void askForPriority()
         {
             Console.WriteLine("Enter Ticket Priority: ");

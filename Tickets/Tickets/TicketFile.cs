@@ -7,36 +7,44 @@ namespace Tickets
 {
     class TicketFile
     {
+
+        
+        
         private static string file = "ticketInfo.txt";
-        StreamWriter sw = File.AppendText(file);
+        
         //write file
+        
         public void writeToTroubleTicketFile(TroubleTicket t)
         {
+            StreamWriter sw = File.AppendText(file);
             sw.WriteLine($"{t.ticketID}|{t.summary}|{t.status}|{t.priority}|{t.submitter}|{t.assigned}|{t.watching}|{t.severity}");
+            sw.Close();
         }
 
         public void writeToEnhancementsFile(Enhancements t)
         {
+            StreamWriter sw = File.AppendText(file);
             sw.WriteLine($"{t.ticketID}|{t.summary}|{t.status}|{t.priority}|{t.submitter}|{t.assigned}|{t.watching}|{t.software}|{t.cost}|{t.reason}|{t.estimate}");
+            sw.Close();
         }
         public void writeToTaskFile(Task t)
         {
+            StreamWriter sw = File.AppendText(file);
             sw.WriteLine($"{t.ticketID}|{t.summary}|{t.status}|{t.priority}|{t.submitter}|{t.assigned}|{t.watching}|{t.projectName}|{t.dueDate}");
-        }
-        public void closeFile()
-        {
             sw.Close();
         }
+        
 
         //read file
-        StreamReader sr = new StreamReader(file);
+        
+        public List<Ticket> ticketList = new List<Ticket>();
         public List<Ticket> readFromTicketFile()
         {
-            List<Ticket> ticketList = new List<Ticket>();
+            StreamReader sr = new StreamReader(file);
             while (!sr.EndOfStream)
             {
                 string line = sr.ReadLine();
-                string[] ticketArr = line.Split(",");
+                string[] ticketArr = line.Split("|");
 
                 //trouble ticket
                 if(ticketArr.Length == 8)
